@@ -114,7 +114,7 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 ## Business Impact
 
 Industry research and Snowflake customer outcomes:
-- **Vietnam electronics supply chain spans 4,000+ component suppliers — 60% located in China, Korea, Japan, and Taiwan** — [General Department of Customs Vietnam](https://www.customs.gov.vn/english)
+- **Vietnam electronics supply chain spans 4,000+ component suppliers — 60% located in China, Korea, Japan, and Taiwan** — [General Department of Customs Vietnam](https://www.customs.gov.vn/)
 - **Global chip shortage cost electronics industry $500B in 2021-2023 — multi-source strategies now mandatory** — [Gartner Supply Chain](https://www.gartner.com/en/supply-chain/insights/supply-chain-disruption)
 - **Lead time variability for electronic components increased 300% post-COVID — AI forecasting reduces buffer stock 25%** — [IHS Markit/S&P Global](https://www.spglobal.com/marketintelligence/en/)
 - **Celestica unified supplier data across 15 manufacturing sites on Snowflake for real-time supply chain visibility** — [Snowflake Manufacturing](https://www.snowflake.com/en/data-cloud/manufacturing/)
