@@ -114,11 +114,10 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 ## Business Impact
 
 Industry research and Snowflake customer outcomes:
-- **Vietnam electronics exports reached US$114B in 2023 — largest export sector** — [GSO Vietnam](https://www.gso.gov.vn/)
-- **Samsung Vietnam accounts for ~50% of Samsung global smartphone production** — [Samsung Vietnam](https://www.samsung.com/vn/)
-- **Supply chain visibility reduces lead time variability by 50%** — [Gartner](https://www.gartner.com/en/supply-chain)
-- **Vietnam FDI in electronics: US$8.5B in 2023 from Korea, Japan, and Taiwan** — [MPI Vietnam](https://www.mpi.gov.vn/)
-
+- **Vietnam electronics supply chain spans 4,000+ component suppliers — 60% located in China, Korea, Japan, and Taiwan** — [General Department of Customs Vietnam](https://www.customs.gov.vn/english)
+- **Global chip shortage cost electronics industry $500B in 2021-2023 — multi-source strategies now mandatory** — [Gartner Supply Chain](https://www.gartner.com/en/supply-chain/insights/supply-chain-disruption)
+- **Lead time variability for electronic components increased 300% post-COVID — AI forecasting reduces buffer stock 25%** — [IHS Markit/S&P Global](https://www.spglobal.com/marketintelligence/en/)
+- **Celestica unified supplier data across 15 manufacturing sites on Snowflake for real-time supply chain visibility** — [Snowflake Manufacturing](https://www.snowflake.com/en/data-cloud/manufacturing/)
 
 ## Key Demo Numbers
 
