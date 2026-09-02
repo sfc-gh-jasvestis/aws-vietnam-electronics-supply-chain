@@ -1,105 +1,78 @@
-# Demo Script: Electronics Supply Chain Visibility
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake builds end-to-end electronics supply chain visibility — Dynamic Tables track 200 suppliers, ML.FORECAST predicts disruptions, and Iceberg shares certified data with OEM customers"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Electronics Supply Chain Visibility
 
----
+**Vietnam - Electronics Manufacturing**
+Use case: Supply Chain Visibility
 
-## Two Personas
+> Multi-tier supplier tracking for Vietnam's US$114B electronics export sector — Dynamic Tables build real-time supply graphs, ML.FORECAST predicts lead times, and Iceberg enables Samsung/Apple supply chain audits via Athena.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Nguyen Van Minh** | VP Supply Chain | React App (SPCS) | Supplier risk, delivery SLA, Samsung/Apple compliance, component shortages |
-| **Tran Thi Lan** | Procurement Manager | Amazon QuickSight | PO lead times, supplier quality metrics, cost variance, alternative sourcing |
+## Why Snowflake
 
----
+Snowflake builds end-to-end electronics supply chain visibility — Dynamic Tables track 200 suppliers, ML.FORECAST predicts disruptions, and Iceberg shares certified data with OEM customers
 
-## What's Built
+- **ML.FORECAST for supplier lead time prediction** - Only demo predicting electronics supplier delays before OEM SLA breach
+- **Iceberg for OEM customer audit access** - Samsung/Apple can self-service audit supply chain via Athena
+- **Vietnamese electronics manufacturing context** - US$114B export sector, Samsung/Apple supply chains, Vietnamese supplier names
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `VIETNAM_ELECTRONICS_SUPPLY_CHAIN` |
+| Service | `VIETNAM_ELECTRONICS_SUPPLY_CHAIN_APP` |
+| Compute pool | `SEA_DEMOS_VIETNAM_POOL` |
+| Dimension table | `RAW.SUPPLY_CHAIN_DOCS` (20 rows) |
+| Fact table | `RAW.QUALITY_METRICS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | VND (₫) |
+
+Regions in play: Ho Chi Minh City, Hanoi, Binh Duong, Dong Nai, Can Tho
+Segments: Semiconductor, Passive Component, Connector, Enclosure
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh VIETNAM_ELECTRONICS_SUPPLY_CHAIN
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 5 tables | SUPPLIERS (200), BOM_ITEMS (5000), PURCHASE_ORDERS (30000), QUALITY_METRICS (100000), SUPPLY_CHAIN_DOCS (80) |
-| **CURATED** | 4 Dynamic Tables | SUPPLIER_RISK_SCORE, DELIVERY_COMPLIANCE, LEAD_TIME_ANALYTICS, SUPPLY_GRAPH |
-| **ML** | ML.FORECAST + ML.ANOMALY_DETECTION | Forecasting + anomaly detection |
-| **AI** | COMPLETE, AI_CLASSIFY, SUMMARIZE | Classification + extraction |
-| **Search** | Cortex Search | 80 documents indexed |
-| **Agent** | SUPPLY_CHAIN_AGENT | Semantic View + Search tools |
+| On-Time Delivery | `92%` | average per event |
+| Component Shortage | `8 SKUs` | average per event |
+| Lead Time (Avg) | `6.2 weeks` | average per event |
+| Active Suppliers | `247` | total across Supply Chain Docs |
+| Single-Source Risk | `₫42B exposure` | total across Supply Chain Docs |
+| Buffer Stock | `8 days` | average per event |
+| Alternatives Qualified | `84%` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Supply Chain Overview
+2. Component Risk
+3. OEM Compliance
+4. Ask AI
+5. Architecture & Data
 
-Vietnam has become Samsung's largest global production base and a key Apple supplier, exporting USB in electronics in 2023. Managing 200 suppliers across 4 countries to meet 98-99% OEM delivery SLAs requires real-time supply chain visibility — not monthly spreadsheet reviews.
+## Talking points
 
----
+- **200 suppliers** - across Vietnam, China, Korea, and Japan
+- **97.2% compliance** - OEM delivery rate (target: 98-99%)
+- **5,000 BOM items** - tracked across Samsung and Apple lines
+- **4 suppliers** - flagged HIGH RISK
+- **80 documents** - contracts and audits searchable
 
-## Script
+## Business impact
 
-### [0:00–0:45] SUPPLY CHAIN OVERVIEW
-
-**Show**: Supply Chain Overview tab
-
-> "Two hundred suppliers across Vietnam, China, Korea, and Japan feeding Samsung and Apple product lines."
-
-**Action**: Point at 200 suppliers and 97.2% compliance
-
-### [0:45–1:30] COMPONENT RISK
-
-**Show**: Component Risk tab
-
-> "5,000 BOM items tracked — 12 critical components with single-source or China-only supply."
-
-**Action**: Show BOM dependency tree
-
-### [1:30–2:15] OEM COMPLIANCE
-
-**Show**: OEM Compliance tab
-
-> "Samsung requires 98% on-time, Apple 99% — current performance: Samsung 97.8%, Apple 96.5%."
-
-**Action**: Show OEM compliance scorecard
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Nguyen asks: 'Which suppliers are flagged high risk?'"
-
-**Action**: Type risk question
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Six Snowflake capabilities, six AWS services."
-
-**Action**: Walk through architecture diagram
-
+- Vietnam electronics exports reached US$114B in 2023 — largest export sector (GSO Vietnam)
+- Samsung Vietnam accounts for ~50% of Samsung global smartphone production (Samsung Vietnam)
+- Supply chain visibility reduces lead time variability by 50% (Gartner)
+- Vietnam FDI in electronics: US$8.5B in 2023 from Korea, Japan, and Taiwan (MPI Vietnam)
 
 ---
-
-## Key Demo Differentiators
-
-1. **ML.FORECAST for supplier lead time prediction** — Only demo predicting electronics supplier delays before OEM SLA breach
-2. **Iceberg for OEM customer audit access** — Samsung/Apple can self-service audit supply chain via Athena
-3. **Vietnamese electronics manufacturing context** — US$114B export sector, Samsung/Apple supply chains, Vietnamese supplier names
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM ELECTRONICS_SUPPLY_CHAIN.RAW.SUPPLIERS` → 200
-- [ ] `SELECT COUNT(*) FROM ELECTRONICS_SUPPLY_CHAIN.RAW.BOM_ITEMS` → 5000
-- [ ] `SELECT COUNT(*) FROM ELECTRONICS_SUPPLY_CHAIN.RAW.PURCHASE_ORDERS` → 30000
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM ELECTRONICS_SUPPLY_CHAIN.ML.LEAD_TIME_FORECAST_RESULTS` → >0
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM ELECTRONICS_SUPPLY_CHAIN.AI.DOC_CLASSIFICATION` → 80
-
+Generated from `generator/demo_specs/aws-vietnam-electronics-supply-chain.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-vietnam-electronics-supply-chain` instead.
