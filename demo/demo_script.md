@@ -20,8 +20,8 @@ Snowflake builds end-to-end electronics supply chain visibility — Dynamic Tabl
 | Database | `VIETNAM_ELECTRONICS_SUPPLY_CHAIN` |
 | Service | `VIETNAM_ELECTRONICS_SUPPLY_CHAIN_APP` |
 | Compute pool | `SEA_DEMOS_VIETNAM_POOL` |
-| Dimension table | `RAW.SUPPLY_CHAIN_DOCS` (20 rows) |
-| Fact table | `RAW.QUALITY_METRICS` (250,000 rows, 90 days) |
+| Dimension table | `RAW.SUPPLIERS` (20 rows) |
+| Fact table | `RAW.COMPONENT_SHIPMENTS` (250,000 rows, 90 days) |
 | Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
 | Currency | VND (₫) |
 
@@ -44,8 +44,8 @@ original literal as a fallback, so it still renders if Snowflake is unreachable.
 | On-Time Delivery | `92%` | average per event |
 | Component Shortage | `8 SKUs` | average per event |
 | Lead Time (Avg) | `6.2 weeks` | average per event |
-| Active Suppliers | `247` | total across Supply Chain Docs |
-| Single-Source Risk | `₫42B exposure` | total across Supply Chain Docs |
+| Active Suppliers | `247` | total across Suppliers |
+| Single-Source Risk | `₫42B exposure` | total across Suppliers |
 | Buffer Stock | `8 days` | average per event |
 | Alternatives Qualified | `84%` | average per event |
 
